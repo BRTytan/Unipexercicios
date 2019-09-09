@@ -1,5 +1,6 @@
+# coding=utf-8
 """
-Exercicio 03: Complete a tabela a seguir utilizando
+Exercicio 02-03: Complete a tabela a seguir utilizando
 a=True, b=False e c=True.
 """
 a = True
