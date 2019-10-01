@@ -17,18 +17,41 @@ print(f'o valor de produto é: {product}')  ### o tamanho do nosso conjunto fini
 phiDeN = (p-1) * (q-1)      ### me diz a quantidade de co-primos de um numero que são menores que ele mesmo.###
 print(f'nossa função totiente é: {phiDeN}')'''
 
-p = int(input('Digite um valor primo: '))
-q = int(input('Digite outro valor primo: '))
-n = p * q                                           # Tamanho do conjunto #
-if n % 3 == True:
-    print(f'Valor do produto é: {n}')
-else:
-    print('Números não são primos')
-fiDeN = (p - 1) * (q - 1)                           # Função Totient #
-if n % 3 == True:
-    print(f'função totient do produto é: {fiDeN}')
-else:
-    print('Números não são validos')
+from random import *
+
+#MÉTODO PARA VERIFICAR SE O NÚMERO E PRIMO
+def primo(num):
+  c = 1 
+  cont = 0 
+  while c <= num:
+    if num % c == 0:
+      cont += 1
+      c += 1
+    else:
+      c += 1
+
+  if cont == 2:
+    return True
+  else:
+    return False
+
+
+#################################################################################################
+aux = False   
+
+while aux == False:   ##gera dois números aleatorios até que os dois sejam primos
+  p = randint(1,100)
+  q = randint(1,100)
+  if primo(p) and primo(q):
+    aux = True
+  else:
+    aux = False
+
+# Tamanho do conjunto #
+
+#P e Q já são números primos, então já é possivel calcular o phi de N
+n = p * q
+fiDeN = (p-1) * (q-1)
 
 e = int(input(f'Digite um número primo, que seja maior que 1 e menor que {fiDeN}: '))
 
