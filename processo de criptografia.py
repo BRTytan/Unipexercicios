@@ -1,22 +1,3 @@
-# coding=utf-8
-"""rsa
-multiplicação de dois numeros primos
-gerar chave assimetrica
-passo 1: multiplicar dois números primos aleatorios(quanto maior, mais seguro). este número é o nosso produto ("n")
-passo 2:calcular totient fi(n) = (n1-1) * (n2-1)
-passo 3:escolher um npumero primo q seja maior que 1 e menor que o valor do passo 2 e precisa ser primo do totient
-passo 4:calcular o "inverso multiplicativo" do valor do passo 3 em mod(resto da divisao) (phi(n))
-"""
-'''p = int(input("Digite um valor:"))
-q = int(input("Digite outro valor: "))
-e = input('qual o valor da chave pública: ') ### chave pública
-
-product = p*q
-print(f'o valor de produto é: {product}')  ### o tamanho do nosso conjunto finitor de valores###
-
-phiDeN = (p-1) * (q-1)      ### me diz a quantidade de co-primos de um numero que são menores que ele mesmo.###
-print(f'nossa função totiente é: {phiDeN}')'''
-
 from random import *
 
 #MÉTODO PARA VERIFICAR SE O NÚMERO E PRIMO
@@ -31,15 +12,14 @@ def primo(num):
       c += 1
 
   if cont == 2:
-    return True
+    return True #RETORNA TRUE SE FOR UM NÚMERO PRIMO!
   else:
     return False
 
-
-#################################################################################################
+################################### CRIAÇÃO DA CHAVE PUBLICA ##############################################################
 aux = False   
 
-while aux == False:   ##gera dois números aleatorios até que os dois sejam primos
+while aux == False:   #gera dois números aleatorios até que os dois sejam primos
   p = randint(1,100)
   q = randint(1,100)
   if primo(p) and primo(q):
@@ -47,22 +27,22 @@ while aux == False:   ##gera dois números aleatorios até que os dois sejam pri
   else:
     aux = False
 
-# Tamanho do conjunto #
-
 #P e Q já são números primos, então já é possivel calcular o phi de N
 n = p * q
-fiDeN = (p-1) * (q-1)
+phiN = (p-1) * (q-1)
 
-e = int(input(f'Digite um número primo, que seja maior que 1 e menor que {fiDeN}: '))
+#A variavel ""E"" deve ser um número primo e maior que 1 e menor que phiN
+aux1 = False
 
-            ## Calculando chave pública ##
-if e <= fiDeN:
-    frase = str(input('Digite uma letra para cifrar: '))
-    if frase == 't' or 'T':
-        frase = 19
-        print(f'a letra tem o valor númerico de {frase}')
-        if frase == 19:
-           c = (frase ** e) % n
-           print(f'sua letra cifrada é {c}')
-else:
-    print('Número incorreto')
+while aux1 == False:
+  e = randint(1,phiN) #gera um número aleatorio, entre 1 e phiN
+
+  if primo(e): #verifica se o número gerado é primo
+    aux1 = True
+
+
+print("Esse é o numero E: " + str(e))
+print("Esse é o número N: " + str(n))
+print("Esse é o phiN: " + str(phiN))
+print("Primeiro número P: " + str(p))
+print("Segundo número Q: " + str(q))
