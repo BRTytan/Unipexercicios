@@ -103,7 +103,7 @@ for letra in listacrip:
     indice += 1
 
 
-
+print("")
 print("Primeiro número aleatorio P: " + str(p))
 print("Segundo número aleatorio Q: " + str(q))
 print("")
