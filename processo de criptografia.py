@@ -130,5 +130,3 @@ print("")
 
 print("Essa é a lista descriptografada: ")
 print(listadescrip)
-
-
