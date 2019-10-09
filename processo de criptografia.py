@@ -1,4 +1,4 @@
-from random import *
+import random
 
 #MÉTODO PARA VERIFICAR SE O NÚMERO E PRIMO
 def primo(num):
@@ -44,10 +44,13 @@ def private_key(toti, e):
 ################################### CRIAÇÃO DA CHAVE PUBLICA ##############################################################
 aux = False   
 
+
 while aux == False:   #gera dois números aleatorios até que os dois sejam primos
-  p = randint(1,100)
-  q = randint(1,100)
-  if primo(p) and primo(q):
+  p = random.randint(1,999) 
+  q = random.randint(1,999)
+  if p == q:
+    aux = False
+  elif primo(p) and primo(q):
     aux = True
   else:
     aux = False
@@ -60,7 +63,7 @@ phiN = (p-1) * (q-1)
 aux1 = False
 
 while aux1 == False:
-  e = randint(1,phiN) #gera um número aleatorio, entre 1 e phiN
+  e = random.randint(1,phiN) #gera um número aleatorio, entre 1 e phiN
 
   if primo(e): #verifica se o número gerado é primo
     aux1 = True
@@ -76,16 +79,13 @@ d = private_key(phiN,e)
 
 texto = input("Informe um texto: ")
 
-lista = []
 listacrip = []
 for caracter in texto:
 
     asc = ord(caracter)
     num = asc ** e
     listacrip.append(mod(num, n))
-    lista.append(caracter)
    
-
 
 ################################### descriptografando texto ###############################33
 
